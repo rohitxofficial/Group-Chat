@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: groupchat-deployment
+  labels:
+    app: groupchat
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: groupchat
+  template:
+    metadata:
+      labels:
+        app: groupchat
+    spec:
+      containers:
+        - name: nodeserver
+          image: rohitxofficial/groupchat:latest
+          ports:
+            - containerPort: 3000
